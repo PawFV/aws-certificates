@@ -23,9 +23,41 @@ It's a partition of a VPC IP address range.
 
 ![](./assets/2022-12-01-10-57-32.png)
 
-**Security**
+## Security
 
 VPC is secured through security groups, ie: store data in S3 and allow access only to instances inside VPC.
+
+### NACL - Network Access Control List
+
+Is the firewall of the subnet boundary, VPC comes with a default NACL that allows inbound/outbound traffic.
+
+You can create a custom NACL, it denies all inbound/outbound network traffic by default until ALLOW rules are added. 
+
+You can associate multiple subnets to a NACL but only one can be associated at a time.
+
+They are stateless and require explicit rules for inbound/outbound network traffic. It contains a numbered list of rules, starting with the lowest number which has higher priority. 
+
+If the traffic matches the rule the allow or deny rule is applied.You can configure rules based on the **Type**, **Protocol**, **Port Range** & **Source**.
+
+![](./assets/2022-12-02-17-23-27.png)
+
+### Security Group
+
+Is a virtual firewall at the instance level to control inbound/outbound traffic. By default it denies all inbound and allows all outbound traffic.
+
+When you create a security group you can define Allow rules to control incoming/outcoming traffic.
+
+Security groups are stateful, responses to inbound traffic are automatically allowed. 
+
+Unlike NACL all security groups are evaluated before deciding to allow traffic.
+
+Traffic can be restricted by **Type**, **Protocol**, **Port Range** & **Source**.
+
+![](./assets/2022-12-02-17-23-47.png)
+
+### Example - Chained Security
+
+![](./assets/2022-12-02-17-27-09.png)
 
 ## Internet Gateway
 
