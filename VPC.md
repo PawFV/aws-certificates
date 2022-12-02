@@ -42,3 +42,32 @@ Is **horizontally scaled**, **redundant** and **highly available** by default.
 
 ![](./assets/2022-12-01-11-23-30.png)
 
+On the other hand for private subnet you need a NAT gateway to the public internet but preventing the internet to initiate connections to the instances.
+
+When traffic goes to the internet the source IPv4 of the private subnet is translated to the NAT Gateway IPv4 of the public subnet. 
+
+For the response traffic, NAT Gateway translates the address back to the private IPv4 address.
+
+![](./assets/2022-12-01-11-36-21.png)
+
+**NAT Gateway**
+
+To create it you must specify the public subnet in which the NAT Gateway should reside. You must also specify an Elastic IP Address to associate to the NAT Gateway when you create it.
+
+After it's created you must update the Route Table for your private subnet to point internet traffic to the NAT Gateway.
+
+![](./assets/2022-12-01-11-40-08.png)
+
+## Peering Connections
+
+It's a networking connection between 2 VPCs. It allows to route traffic using IPv4/IPv6. Instances can communicate with each other as if they were in the same network.
+
+They can be in different regions or AWS accounts.
+
+**Benefits**
+
+- Cost effective.
+- Facilitate the transfer of data.
+- Use existing infrastructure which prevents single point of failure and bandwidth bottlenecks.
+
+![](./assets/2022-12-02-11-16-00.png)
