@@ -58,6 +58,21 @@ After it's created you must update the Route Table for your private subnet to po
 
 ![](./assets/2022-12-01-11-40-08.png)
 
+## Route Table
+
+It contains a set of rules called **Routes** that are used to determine where Network Traffic is directed.
+When a VPC is created it automatically has a Route Table (by default). You can create custom Route Tables.
+
+Each Route in a table specifies a **destination** & **target**.
+
+Each subnet in a VPC must be associated with a Route Table, you use a public Subnet for resources connected to the internet and a private Subnet for resources that wont be connected to the internet.
+
+You can make a subnet public by adding a Route in the Subnet Route Table to an Internet Gateway to support inbound and outbound access to the public internet.
+
+A private route doesn't have a route to the Internet Gateway in the Subnet Route Table.
+
+![](./assets/2022-12-02-13-42-45.png)
+
 ## Peering Connections
 
 It's a networking connection between 2 VPCs. It allows to route traffic using IPv4/IPv6. Instances can communicate with each other as if they were in the same network.
@@ -71,3 +86,8 @@ They can be in different regions or AWS accounts.
 - Use existing infrastructure which prevents single point of failure and bandwidth bottlenecks.
 
 ![](./assets/2022-12-02-11-16-00.png)
+
+### Establishing VPC Peering Connection
+
+![](./assets/2022-12-02-11-39-08.png)
+
