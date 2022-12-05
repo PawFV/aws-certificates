@@ -10,6 +10,9 @@
     - [Throughput Modes](#throughput-modes)
     - [Encryption](#encryption)
     - [Containers and Serverless File Storage](#containers-and-serverless-file-storage)
+  - [Data Transfer \& Backup](#data-transfer--backup)
+    - [Data Transfer](#data-transfer)
+    - [AWS Backup](#aws-backup)
 
 # EFS - Elastic File System
 
@@ -128,3 +131,34 @@ It's integrated with Serverless Compute Services from AWS that require shared st
 In a single step EFS provides applications running on ECS, EKS, Fargate & Lambda access to shared file system for stateful workloads.
 
 ![](./assets/2022-12-05-12-08-07.png)
+
+## Data Transfer & Backup
+
+### Data Transfer
+
+Moving your EFS file data can be done by using [AWS DataSync](https://docs.aws.amazon.com/es_es/datasync/latest/userguide/what-is-datasync.html) a managed data transfer service that simplifies, automates & accelerates copying data between NFS file shares, EFS file systems, S3 Buckets and On-Premises storage.
+
+DataSync can transfer file data and also file system metadata such as ownership, timestamps and access permissions.
+
+![](./assets/2022-12-05-12-13-50.png)
+
+DataSync uses a software agent to connect to your EFS file systems, it automates scaling and validating trasnfers so you don't have to write scripts, modify your applications or manage infrastructure.
+
+You can transfer active data sets over [AWS Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html) or the internet at the speed of 10x than open-source tools.
+
+You can use DataSync for:
+- One-time data migration.
+- Ongoing workflows with Periodic synchronization. 
+- Replication for data protection and recovery.
+
+![](./assets/2022-12-05-12-19-55.png)
+
+### AWS Backup
+
+[AWS Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html) is a fully managed backup service that makes it easy to centrally manage and automate backups of your EFS file systems, removing the need for custom solutions. 
+
+It centralizes the backup of other AWS Services as well as On-Premise. You do not need to perform backup tasks service by service, create custom scripts and manual processes for the backup activities.
+
+You can centrally configure and audit backup-scheduling, retention period policies and monitor backup activity. 
+
+![](./assets/2022-12-05-12-28-00.png)
